@@ -9,18 +9,18 @@ import { useRouter } from "next/navigation";
 export default function Page() {
   const router = useRouter();
 
-  const [secureCode, setSecureCode] = useState("");
+  const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
 
-  const handleclick = () => {
-    if(secureCode === "sauiot") {
+  const handleClick = () => {
+    if (password === "sauiot") {
       router.push("/alltask");
-    }else {
+    } else {
       Swal.fire({
-        icon: 'warning',
-        title: 'Oops...',
-        text: 'Please enter a secure code!',
+        icon: "error",
+        title: "Access denied",
+        text: "Password is incorrect, please try again.",
       });
-      return;
     }
   };
 
@@ -37,17 +37,31 @@ export default function Page() {
         />
         <h1>Welcome to Task Management App!</h1>
 
-        <input
-          type="text"
-          placeholder="secure code"
-          className="border border-gray-400 rounded-lg p-2 w-1/5 mt-5 text-center"
-          value={secureCode}
-          onChange={(e) => setSecureCode(e.target.value)}
-        />
+        <div className="flex flex-col items-center w-full">
+          <input
+            type={showPassword ? "text" : "password"}
+            placeholder="Password"
+            className="border border-gray-400 rounded-lg p-2 w-1/5 mt-5 text-center"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          <label className="mt-2 text-sm">
+            <input
+              type="checkbox"
+              checked={showPassword}
+              onChange={() => setShowPassword((s) => !s)}
+              className="mr-1"
+            />
+            แสดงรหัสผ่าน
+          </label>
+        </div>
 
-        <button className="bg-blue-500 hover:bg-blue-700 w-1/5 text-white 
-        font-bold p-2 rounded-lg mt-5 cursor-pointer">
-          login
+        <button
+          onClick={handleClick}
+          className="bg-blue-500 hover:bg-blue-700 w-1/5 text-white 
+        font-bold p-2 rounded-lg mt-5 cursor-pointer"
+        >
+          เข้าสู่ระบบ
         </button>
       </div>
       <Footer/>

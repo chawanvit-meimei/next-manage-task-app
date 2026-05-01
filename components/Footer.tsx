@@ -1,4 +1,4 @@
-export default function Page() {
+export default function FooterSau() {
     return (
         <>
             <hr className="my-5 mx-auto w-3/4"/>

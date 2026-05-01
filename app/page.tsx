@@ -3,7 +3,7 @@ import Image from "next/image";
 import imgtask from "@/assets/images/imgtask.png";
 import { useState } from "react";
 import Swal from "sweetalert2"; 
-import Footer from "@/components/FooterSau";
+import Footer from "@/components/Footer";
 import { useRouter } from "next/navigation";
 
 export default function Page() {
@@ -18,8 +18,8 @@ export default function Page() {
     } else {
       Swal.fire({
         icon: "error",
-        title: "Access denied",
-        text: "Password is incorrect, please try again.",
+        title: "ไม่อนุญาต",
+        text: "รหัสผ่านไม่ถูกต้อง กรุณาลองใหม่อีกครั้ง",
       });
     }
   };
@@ -64,7 +64,6 @@ export default function Page() {
           เข้าสู่ระบบ
         </button>
       </div>
-      <Footer/>
     </>
   );
 }

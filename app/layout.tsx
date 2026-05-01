@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Kanit } from "next/font/google";
-import FooterSau from "@/components/FooterSau";
+import Footer from "@/components/Footer";
 import "./globals.css";
 
 
@@ -25,7 +25,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${kanit.className} `}>
         {children}
-    
+        <Footer />
       </body>
     </html>
   );
